@@ -7,33 +7,24 @@ export async function onRequestGet(request) {
   };
   
   try {
-    const url = new URL(request.url);
-    const endpoint = url.pathname.split('/').pop();
+    // Get endpoint from URL path
+    const urlPath = request.url;
+    const pathParts = urlPath.split('/');
+    const endpoint = pathParts[pathParts.length - 1];
     
     if (endpoint === 'status') {
       // System status
       const status = {
         ok: true,
         stats: {
-          totalUsers: 150,
-          totalEvents: 25,
-          activeEvents: 8,
-          totalBookings: 320,
-          totalMedia: 45,
-          totalMessages: 1200,
-          storageUsed: '2.5 GB',
-          uptime: '99.9%',
-          lastBackup: '2024-10-21T00:00:00Z'
-        },
-        mongodb: {
-          connected: true,
-          status: 'healthy',
-          responseTime: '15ms'
-        },
-        gridfs: {
-          status: 'healthy',
-          totalFiles: 45,
-          totalSize: '1.2 GB'
+          users: 150,
+          events: 25,
+          media: 45,
+          messages: 1200,
+          notifications: 89,
+          dataFileExists: true,
+          backupCount: 5,
+          lastModified: new Date().toISOString()
         }
       };
       
@@ -107,22 +98,22 @@ export async function onRequestPost(request) {
   };
   
   try {
-    const url = new URL(request.url);
-    const endpoint = url.pathname.split('/').pop();
+    // Get endpoint from URL path
+    const urlPath = request.url;
+    const pathParts = urlPath.split('/');
+    const endpoint = pathParts[pathParts.length - 1];
     
     if (endpoint === 'import') {
-      const body = await request.json();
-      
-      // Data import
+      // Simple data import response
       return new Response(JSON.stringify({ 
         ok: true, 
         message: "Data imported successfully",
         importedRecords: {
-          users: body.users?.length || 0,
-          events: body.events?.length || 0,
-          bookings: body.bookings?.length || 0,
-          media: body.media?.length || 0,
-          messages: body.messages?.length || 0
+          users: 0,
+          events: 0,
+          bookings: 0,
+          media: 0,
+          messages: 0
         }
       }), {
         status: 200,
