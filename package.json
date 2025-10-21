@@ -6,9 +6,7 @@
     "start": "echo 'Cloudflare Pages Functions - no start script needed'",
     "dev": "echo 'Cloudflare Pages Functions - no dev script needed'"
   },
-  "dependencies": {
-    "mongodb": "^6.3.0"
-  },
+  "dependencies": {},
   "engines": {
     "node": ">=18"
   }
