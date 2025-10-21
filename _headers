@@ -1,14 +1,6 @@
-# Cloudflare Pages Configuration
-
-## Build Settings
-- **Build Command**: `npm install`
-- **Build Output Directory**: `.`
-- **Root Directory**: `/`
-
-## Environment Variables
-- `NODE_ENV`: `production`
-- `PORT`: `8787`
-
-## Functions
-- **Runtime**: Node.js
-- **Entry Point**: `backend.js`
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+*/
