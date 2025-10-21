@@ -7,8 +7,10 @@ export async function onRequestGet(request) {
   };
   
   try {
-    const url = new URL(request.url);
-    const type = url.pathname.split('/').pop();
+    // Get type from URL path
+    const urlPath = request.url;
+    const pathParts = urlPath.split('/');
+    const type = pathParts[pathParts.length - 1];
     
     if (type === 'events') {
       // Event analytics
