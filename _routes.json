@@ -5,6 +5,9 @@
     "/healthz"
   ],
   "exclude": [
-    "/"
+    "/_app/*",
+    "/_assets/*",
+    "/_headers",
+    "/_redirects"
   ]
 }
