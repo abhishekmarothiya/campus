@@ -7,7 +7,16 @@ export async function onRequestPost(request) {
   };
   
   try {
-    const body = await request.json();
+    // Handle request body parsing for Cloudflare Pages Functions
+    let body;
+    try {
+      body = await request.json();
+    } catch (jsonError) {
+      // Fallback: try to parse as text and then JSON
+      const text = await request.text();
+      body = JSON.parse(text);
+    }
+    
     const { username, password } = body;
     
     // Simple hardcoded admin check
