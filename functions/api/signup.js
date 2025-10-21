@@ -7,7 +7,25 @@ export async function onRequestPost(request) {
   };
   
   try {
-    const body = await request.json();
+    // Handle request body parsing for Cloudflare Pages Functions
+    let body;
+    try {
+      if (typeof request.json === 'function') {
+        body = await request.json();
+      } else if (typeof request.text === 'function') {
+        const text = await request.text();
+        body = JSON.parse(text);
+      } else {
+        const arrayBuffer = await request.arrayBuffer();
+        const text = new TextDecoder().decode(arrayBuffer);
+        body = JSON.parse(text);
+      }
+    } catch (parseError) {
+      return new Response(JSON.stringify({ ok: false, error: "Invalid request format" }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders }
+      });
+    }
     const { name, surname, age, gender, email, phone, regNumber, password, role } = body;
     
     // Simple validation
