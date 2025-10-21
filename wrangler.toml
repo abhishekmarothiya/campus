@@ -1,7 +1,0 @@
-name = "campus-event-hub-backend"
-compatibility_date = "2024-01-01"
-
-[env.production.vars]
-NODE_ENV = "production"
-CF_PAGES = "1"
-MONGODB_URI = "mongodb+srv://abhishekmarothiya072002_db_user:vdHyqmX1RLzyccRu@cluster0.xgxmkt2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
