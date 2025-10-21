@@ -1,17 +1,13 @@
 {
   "name": "campus-event-hub-backend",
   "version": "1.0.0",
-  "main": "backend.js",
+  "main": "functions/api/_middleware.js",
   "scripts": {
-    "start": "node backend.js",
-    "dev": "node backend.js"
+    "start": "echo 'Cloudflare Pages Functions - no start script needed'",
+    "dev": "echo 'Cloudflare Pages Functions - no dev script needed'"
   },
   "dependencies": {
-    "compression": "^1.7.4",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "mongodb": "^6.3.0",
-    "multer": "^1.4.5-lts.1"
+    "mongodb": "^6.3.0"
   },
   "engines": {
     "node": ">=18"

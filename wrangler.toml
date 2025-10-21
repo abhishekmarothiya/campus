@@ -1,5 +1,6 @@
 name = "campus-event-hub-backend"
 compatibility_date = "2024-01-01"
+main = "functions/api/_middleware.js"
 
 [env.production.vars]
 NODE_ENV = "production"
