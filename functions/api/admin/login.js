@@ -10,11 +10,24 @@ export async function onRequestPost(request) {
     // Handle request body parsing for Cloudflare Pages Functions
     let body;
     try {
-      body = await request.json();
-    } catch (jsonError) {
-      // Fallback: try to parse as text and then JSON
-      const text = await request.text();
-      body = JSON.parse(text);
+      // Try different methods to get request body
+      if (typeof request.json === 'function') {
+        body = await request.json();
+      } else if (typeof request.text === 'function') {
+        const text = await request.text();
+        body = JSON.parse(text);
+      } else {
+        // Fallback: try to read as arrayBuffer and convert
+        const arrayBuffer = await request.arrayBuffer();
+        const text = new TextDecoder().decode(arrayBuffer);
+        body = JSON.parse(text);
+      }
+    } catch (parseError) {
+      console.error('Request parsing error:', parseError);
+      return new Response(JSON.stringify({ ok: false, error: "Invalid request format" }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json', ...corsHeaders }
+      });
     }
     
     const { username, password } = body;
