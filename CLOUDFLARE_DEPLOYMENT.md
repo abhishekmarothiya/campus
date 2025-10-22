@@ -147,3 +147,4 @@ Your Campus Event Hub will be live at:
 - **Bot protection** included
 
 **Cloudflare Pages is the perfect choice - 100% free with no billing details required!** 🚀
+

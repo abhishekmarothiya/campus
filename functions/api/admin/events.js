@@ -7,9 +7,13 @@ export async function onRequestGet(request) {
   };
   
   try {
-    const url = new URL(request.url);
-    const search = url.searchParams.get('search');
-    const category = url.searchParams.get('category');
+    // Get search parameters from URL
+    const urlPath = request.url;
+    const urlParts = urlPath.split('?');
+    const searchParams = urlParts.length > 1 ? urlParts[1] : '';
+    const params = new URLSearchParams(searchParams);
+    const search = params.get('search');
+    const category = params.get('category');
     
     // Sample events data
     let events = [
@@ -78,8 +82,10 @@ export async function onRequestDelete(request) {
   };
   
   try {
-    const url = new URL(request.url);
-    const eventId = url.pathname.split('/').pop();
+    // Get event ID from URL path
+    const urlPath = request.url;
+    const pathParts = urlPath.split('/');
+    const eventId = pathParts[pathParts.length - 1];
     
     // Delete event
     return new Response(JSON.stringify({ 

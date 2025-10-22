@@ -7,9 +7,13 @@ export async function onRequestGet(request) {
   };
   
   try {
-    const url = new URL(request.url);
-    const search = url.searchParams.get('search');
-    const role = url.searchParams.get('role');
+    // Get search parameters from URL
+    const urlPath = request.url;
+    const urlParts = urlPath.split('?');
+    const searchParams = urlParts.length > 1 ? urlParts[1] : '';
+    const params = new URLSearchParams(searchParams);
+    const search = params.get('search');
+    const role = params.get('role');
     
     // Sample users data
     let users = [
@@ -88,8 +92,10 @@ export async function onRequestDelete(request) {
   };
   
   try {
-    const url = new URL(request.url);
-    const userId = url.pathname.split('/').pop();
+    // Get user ID from URL path
+    const urlPath = request.url;
+    const pathParts = urlPath.split('/');
+    const userId = pathParts[pathParts.length - 1];
     
     // Delete user
     return new Response(JSON.stringify({ 
