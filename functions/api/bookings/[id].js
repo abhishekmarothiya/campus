@@ -7,8 +7,10 @@ export async function onRequestDelete(request) {
   };
   
   try {
-    const url = new URL(request.url);
-    const bookingId = url.pathname.split('/').pop();
+    // Get booking ID from URL path
+    const urlPath = request.url;
+    const pathParts = urlPath.split('/');
+    const bookingId = pathParts[pathParts.length - 1];
     
     // Cancel booking
     return new Response(JSON.stringify({ 

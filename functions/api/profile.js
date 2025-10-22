@@ -1,4 +1,4 @@
-// Cloudflare Pages Function - User Profile Management
+// Cloudflare Pages Function - User Profile Management (DEPLOYMENT FORCE)
 export async function onRequestGet(request) {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',

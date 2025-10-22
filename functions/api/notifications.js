@@ -7,8 +7,12 @@ export async function onRequestGet(request) {
   };
   
   try {
-    const url = new URL(request.url);
-    const userRegNumber = url.searchParams.get('userRegNumber');
+    // Get search parameters from URL
+    const urlPath = request.url;
+    const urlParts = urlPath.split('?');
+    const searchParams = urlParts.length > 1 ? urlParts[1] : '';
+    const params = new URLSearchParams(searchParams);
+    const userRegNumber = params.get('userRegNumber');
     
     // Sample notifications
     const notifications = [

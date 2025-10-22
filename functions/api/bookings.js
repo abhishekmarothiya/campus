@@ -1,4 +1,4 @@
-// Cloudflare Pages Function - Event Bookings Management
+// Cloudflare Pages Function - Event Bookings Management (DEPLOYMENT FORCE)
 export async function onRequestGet(request) {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
