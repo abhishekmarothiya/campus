@@ -1,4 +1,4 @@
-// Cloudflare Pages Function - Media Management
+// Cloudflare Pages Function - Media Management (DEPLOYMENT FORCE)
 export async function onRequestGet(request) {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
