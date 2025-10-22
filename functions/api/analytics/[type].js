@@ -1,4 +1,4 @@
-// Cloudflare Pages Function - Analytics & Reports
+// Cloudflare Pages Function - Analytics & Reports (DEPLOYMENT FORCE)
 export async function onRequestGet(request) {
   const corsHeaders = {
     'Access-Control-Allow-Origin': '*',
